@@ -43,6 +43,13 @@ html {
 }
 
 body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--global-html-backgroundColor);
 }
 
 /*
@@ -133,11 +140,83 @@ body {
 */
 
 .c-robot {
+  max-width: 400px;
+  fill: var(--global-color-front);
+  --c-robot-animation-duration: 0.75s;
+  --c-robot-animation-timing-function: ease-in-out;
+  --c-robot-animation-iteration-count: infinite;
+  --c-robot-animation-direction: alternate;
 }
 
 .c-robot__shadow {
+  fill: var(--c-robot__shadow-fill, black);
+  opacity: 0.1;
 }
 
+.c-robot__css-anim #Robot {
+  animation-name: robotHover;
+  animation-duration: var(--c-robot-animation-duration);
+  animation-timing-function: var(--c-robot-animation-timing-function);
+  animation-iteration-count: var(--c-robot-animation-iteration-count);
+  animation-direction: var(--c-robot-animation-direction);
+}
+
+.c-robot__css-anim #Shadow {
+  transform-origin: 50% 100%;
+  animation-name: shadowPulse;
+  animation-duration: var(--c-robot-animation-duration);
+  animation-timing-function: var(--c-robot-animation-timing-function);
+  animation-iteration-count: var(--c-robot-animation-iteration-count);
+  animation-direction: var(--c-robot-animation-direction);
+}
+
+@keyframes shadowPulse {
+  100% {
+    transform: scale(0.75);
+  }
+}
+
+@keyframes robotHover {
+  0% {
+    transform: translateY(2%);
+  }
+
+  100% {
+    transform: translateY(-2%);
+  }
+}
+
+.u-hide {
+  display: none;
+}
+
+.c-controls {
+  display: flex;
+  gap: 5rem;
+}
+
+.c-controls__list {
+  display: flex;
+  gap: 2rem;
+}
+
+.c-controls__button {
+  cursor: pointer;
+  color: white;
+}
+
+.c-controls__list input[type='radio']:checked + label {
+  background-color: rgb(58, 58, 58);
+  padding: 8px 12px;
+  border-radius: 24px;
+}
+
+.c-controls__button--pause {
+  margin-top: -5px;
+  background-color: rgb(58, 58, 58);
+  padding: 12px 12px 10px;
+  border-radius: 100%;
+}
 
 /*
     Component: Controls
