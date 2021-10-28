@@ -11,8 +11,10 @@ let tl = gsap.timeline({
   repeat: -1,
   yoyo: true,
 });
-
 tl.set('#Shadow', {
+  transformOrigin: '50% 100%',
+});
+tl.set('#Fire', {
   transformOrigin: '50% 100%',
 })
   .fromTo(
@@ -24,6 +26,33 @@ tl.set('#Shadow', {
       y: -2.5,
     }
   )
+  .fromTo(
+    '#Signal',
+    {
+      x: 0.5,
+    },
+    {
+      x: -0.5,
+    },
+    '<'
+  )
+  .fromTo(
+    '#Arm-right',
+    {
+      rotate: 0,
+    },
+    {
+      rotate: -45,
+    },
+    '<'
+  )
+  .to(
+    '#Fire',
+    {
+      scale: 0.9,
+    },
+    '<'
+  )
   .to(
     '#Shadow',
     {
@@ -31,7 +60,6 @@ tl.set('#Shadow', {
     },
     '<'
   );
-
 const ListenToClicks = function () {
   const fast = document.querySelector('.js-fast');
   const normal = document.querySelector('.js-normal');
